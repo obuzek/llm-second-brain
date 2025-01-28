@@ -23,6 +23,14 @@ bash -c "$(curl -fsSL 'https://raw.githubusercontent.com/obuzek/llm-second-brain
 ```
 ```
 5. Creating a RAG database
+```
+```
+6. Adding agents
+```
+```
+7. Adding tools
+```
+```
 
 ## Principles
 
