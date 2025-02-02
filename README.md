@@ -110,7 +110,7 @@ The agents themselves are developed using @kellyaa's [agents + RAG framework](ht
 
 ## Full Installation Instructions
 
-**1. Installing Ollama**
+#### **1. Installing Ollama**
 
 See [Ollama's README](https://github.com/ollama/ollama) for full installation instructions. However it is as simple as:
 
@@ -133,13 +133,13 @@ ollama serve
 ```
 Now you are up and running with Ollama and Granite
 
-**2. Installing Granite 3.1**
+#### **2. Installing Granite 3.1**
 
 ```
 ollama pull granite3.1-dense:8b
 ```
 
-**3. Installing VSCode and Continue**
+#### **3. Installing VSCode and Continue**
 
 If you don't already have VSCode, you can install it through Homebrew for the purposes of this experiment:
 ```
@@ -154,7 +154,7 @@ Search for: "Continue"
 
 Click `Install` to add the extension for [Continue.dev](https://www.continue.dev/).
 
-**4. Installing OpenWebUI**
+#### **4. Installing OpenWebUI**
 
 ```
 pip install open-webui
@@ -163,7 +163,7 @@ open-webui serve
 
 Visit your local OpenWebUI instance: [https://127.0.0.1:8080](https://127.0.0.1:8080)
 
-**5. Adding knowledge**
+#### **5. Adding knowledge**
 
 Click the hamburger menu in the top left corner.
 
@@ -198,7 +198,7 @@ Click "Select".
 
 Your collection should now be made available.
 
-**6. Adding search agent**
+#### **6. Adding search agent**
 
 > [!NOTE]
 > Especially when using local models, agent design is critical. Smaller local models are more impacted by small differences in prompting. Using agents and tools designed to work with your specific LLM will lead to the highest success.
@@ -211,7 +211,7 @@ Don't forget to flip the toggle switch on in the Admin Panel -> Functions sectio
 
 Keep track of the name of your new Function (perhaps "RAG Agent"), since you'll need it in the next step.
 
-**7. Adding the todo list tool**
+#### **7. Adding the todo list tool**
 
 Click the hamburger menu in the top left corner.
 
@@ -237,7 +237,7 @@ Your tool is now ready to use!
 
 Let's make it available to our LLM.
 
-**8. Optimizing model to use todo list tool**
+#### **8. Optimizing model to use todo list tool**
 
 Since the model has been fine-tuned on data indicating that it can't access outside resources, we need to add a system prompt that allows the model to better respond to questions involving our new todo list tool.
 
@@ -263,7 +263,7 @@ Under "Tools", tick the checkbox for "Add Task".
 
 Scroll to the bottom and click "Save & Update".
 
-**8. Try it out!**
+#### **9. Try it out!**
 
 Go back to the hamburger menu in the top left corner and click "New Chat".
 
