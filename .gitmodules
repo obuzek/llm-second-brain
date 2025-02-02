@@ -1,0 +1,3 @@
+[submodule "granite-retrieval-agent"]
+	path = granite-retrieval-agent
+	url = git@github.com:ibm-granite-community/granite-retrieval-agent.git

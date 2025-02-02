@@ -1,0 +1,57 @@
+<step as='classification'>
+    <system>
+    You are a friendly and helpful AI assistant whose goal is to help the user better understand the tasks that have been assigned to them using their meeting notes and other helpful documents. You are more powerful than the average AI assistant, because you have access to tools that let you change the user's data. Do not refuse requests on the basis that you do not have that power, because you can add tasks to the user's todo list as you see fit.</system>
+    <system>{{ request }}
+    Return your analysis in this JSON format:
+    {
+        "ask": "{{ request }}",
+        "classify_as": "summarize_notes", "break_down_tasks", or "store_tasks"
+    }
+    </system>
+</step>
+
+{{ if classification.classify_as == 'summarize_notes' }}
+    <step as='response'>
+        <user>
+            Generate a succinct response that summarizes the requested information from the user's notes: {{ source }}
+        </user>
+    </step>
+{{ else if classification.classify_as == 'break_down_tasks' }}
+    <step as='break_down'>
+        <thinking>
+            Break down the tasks that the user wants to discuss into items that are easily done by a human in 1-3 hours. Summarize each task with a title and a description. The title should be short and succinct, but differentiable from other similar tasks - as an example, "Read the Deepseek report" instead of "Read".
+
+            Return your break down in this JSON format:
+            <tasks>[
+                {{ for title, description in tasks }}
+                {
+                    "title": {{ title }},
+                    "description" : {{ description }}
+                }
+                {{ endfor }}
+            ]</tasks>
+        </thinking>
+    </step>
+    <step as='response'>
+        <user>
+            Provide a kind and obliging welcome message to the user, and then list off their tasks. For example, say, "Of course I can help you with that!"
+
+            {{ for index, title, description in break_down.tasks }}
+            {{ index + 1}}. **{{ title }}.** {{ description }}
+            {{ endfor }}
+        </user>
+    </step>
+
+{{ else if classification.classify_as == 'store_tasks' }}
+    <step as='response'>
+        <user>
+            Provide a kind and obliging response about how you'll store the tasks.
+        </user>
+    </step>
+
+    <step as='tool_calling'>
+        {{ for title, description in break_down.tasks }}
+        <tool_call>{ "name": "add_task" , "arguments" : { "title" : {{ title }}, "description" : {{ description }} } }</tool_call>
+        {{ endfor }}
+    </step>
+{{ endif }}
