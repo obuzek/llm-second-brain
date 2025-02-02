@@ -280,6 +280,10 @@ What were my action items from the last project meeting? Can you break them down
 
 See how it responds!
 
+## Published At
+
+* FOSDEM '25: Building Your (Local) LLM Second Brain ([talk](https://fosdem.org/2025/schedule/event/fosdem-2025-6542-building-your-local-llm-second-brain/)) ([slides](https://docs.google.com/presentation/d/19zAWdGB1h_2ZkBXXRl0flYa4YRxsV1-RtKJxRtteksg/edit?usp=sharing))
+
 ## References
 
 This project is a fork of `lm-desk`. Thanks to Gabe Goodhart (@gabe-l-hart) for the install scripts, and Kelly Abuelsaad (@kellyaa) for the agent work.
